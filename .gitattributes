@@ -1,0 +1,7 @@
+# .gitattributes
+
+# Set the clean and smudge filters for all shell scripts
+*.sh     filter=fixeol
+
+# Set the clean and smudge filters for all text files (if needed)
+*.txt    filter=fixeol

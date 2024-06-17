@@ -1,0 +1,13 @@
+API_TOKEN="YOUR_LINODE_ACCOUNT_TOKEN"
+
+LABEL="my-linode-$(openssl rand -hex 3)"
+
+TYPE="g6-nanode-1"
+
+REGION="eu-west"
+
+IMAGE="linode/ubuntu22.04"
+
+ROOT_PASS="YOUR_INSTANCE_ROOT_PASSWORD"
+
+USER="YOUR_LINODE_ACCOUNT_USER_NAME"
