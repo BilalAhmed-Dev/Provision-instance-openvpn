@@ -7,7 +7,7 @@ source config.sh
 
 retry_interval=5
 OPEN_VPN_FILE=${1:-"client"}
-TERMINATION_INTERVAL_HOURS=${2:-"2"}
+TERMINATION_INTERVAL_HOURS=${2:-2}
 
 # Function to check if a variable is empty and exit if it is
 check_undefined() {
