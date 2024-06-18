@@ -37,7 +37,7 @@ To use the deployment script, follow these instructions:
    Execute the script `provision-linode.sh` with optional arguments:
 
    ```bash
-   ./provision-linode.sh [OPEN_VPN_FILE] [TERMINATION_INTERVAL_HOURS]
+   ./provision-linode.sh [OPEN_VPN_FILE]
 
 
 2. **Import the OpenVPN Configuration:**

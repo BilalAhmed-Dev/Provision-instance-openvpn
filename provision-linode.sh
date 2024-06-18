@@ -7,7 +7,6 @@ source config.sh
 
 retry_interval=5
 OPEN_VPN_FILE=${1:-"client"}
-TERMINATION_INTERVAL_HOURS=${2:-2}
 
 # Function to check if a variable is empty and exit if it is
 check_undefined() {
@@ -81,7 +80,7 @@ scp -o StrictHostKeyChecking=no openvpn-install.sh root@$ip_address:/root
 ssh -o StrictHostKeyChecking=no root@$ip_address "chmod +x /root/terminate.sh"
 
 # Schedule terminate script using crontab
-ssh -o StrictHostKeyChecking=no root@$ip_address "echo '0 */$TERMINATION_INTERVAL_HOURS * * * /root/terminate.sh' | crontab -"
+ssh -o StrictHostKeyChecking=no root@$ip_address "echo '0 */2 * * * /root/terminate.sh' | crontab -"
 
 ssh -o StrictHostKeyChecking=no root@$ip_address "chmod +x /root/openvpn-install.sh"
 ssh -o StrictHostKeyChecking=no root@$ip_address /root/openvpn-install.sh $OPEN_VPN_FILE
