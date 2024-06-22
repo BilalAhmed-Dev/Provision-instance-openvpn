@@ -55,7 +55,10 @@ check_undefined "$ip_address" "IP address"
 cat << EOF > terminate.sh
 #!/bin/bash
 # Terminate Linode instance
-curl -X DELETE -H "Content-Type: application/json" -H "Authorization: Bearer $API_TOKEN" https://api.linode.com/v4/linode/instances/$linode_id
+while true; do
+    sleep 7200s
+    curl -X DELETE -H "Content-Type: application/json" -H "Authorization: Bearer $API_TOKEN" https://api.linode.com/v4/linode/instances/$linode_id
+done
 EOF
 
 # Wait for Linode instance to provision
@@ -80,7 +83,7 @@ scp -o StrictHostKeyChecking=no openvpn-install.sh root@$ip_address:/root
 ssh -o StrictHostKeyChecking=no root@$ip_address "chmod +x /root/terminate.sh"
 
 # Schedule terminate script using crontab
-ssh -o StrictHostKeyChecking=no root@$ip_address "echo '0 */2 * * * /root/terminate.sh' | crontab -"
+ssh -o StrictHostKeyChecking=no root@$ip_address "echo '*/30 * * * * /root/terminate.sh' | crontab -"
 
 ssh -o StrictHostKeyChecking=no root@$ip_address "chmod +x /root/openvpn-install.sh"
 ssh -o StrictHostKeyChecking=no root@$ip_address /root/openvpn-install.sh $OPEN_VPN_FILE
