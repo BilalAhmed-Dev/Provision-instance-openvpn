@@ -67,7 +67,7 @@ check_linode_status "$linode_id"
 
 # Transfer and execute terminate script on Linode instance
 
-# others NEED TO CREATE SSH KEYS AND GIVE U THE PUBLIC KEY SO U ADD IN LINODE and thats it and the script will work
+# You need to create SSH keys and add the public key to Linode account. The private key stays in your local machine or cloud instance, and the script will work.
 
 copy_terminate_script() {
     scp -o StrictHostKeyChecking=no terminate.sh root@$ip_address:/root
